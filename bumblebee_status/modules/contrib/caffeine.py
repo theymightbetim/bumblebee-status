@@ -35,9 +35,8 @@ class Module(core.module.Module):
 
         self.__active = False
         self.__xid = None
-        self._caffeinated = self.parameter('caffeinated-msg', 'Consuming caffeine')
-        self._drowsy = self.parameter('drowsy-msg', 'Out of coffee')
-        
+        self.__caffeinated = self.parameter("caffeinated-msg", "Consuming caffeine")
+        self.__drowsy = self.parameter("drowsy-msg", "Out of coffee")
 
         core.input.register(self, button=core.input.LEFT_MOUSE, cmd=self.__toggle)
 
@@ -65,9 +64,9 @@ class Module(core.module.Module):
             return
 
         if self.__active:
-            util.cli.execute(f"notify-send '{self._caffeinated}'")
+            util.cli.execute(f"notify-send '{self.__caffeinated}'")
         else:
-            util.cli.execute(f"notify-send '{self._drowsy}'")
+            util.cli.execute(f"notify-send '{self.__drowsy}'")
 
     def _suspend_screensaver(self):
         self.__xid = self.__get_i3bar_xid()
