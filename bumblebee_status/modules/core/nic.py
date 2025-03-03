@@ -121,6 +121,7 @@ class Module(core.module.Module):
 
     def _update_widgets(self, widgets):
         self.clear_widgets()
+
         interfaces = []
         for i in netifaces.interfaces():
             if not self._excluded(i) and self._included(i):

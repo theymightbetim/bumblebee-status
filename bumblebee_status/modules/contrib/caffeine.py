@@ -2,6 +2,10 @@
 
 """Enable/disable automatic screen locking.
 
+Parameters:
+    * caffeine.caffeinated: Notification text to send when turned on
+    * caffeine.drowsy: Noficiation text to send when turned off
+
 Requires the following executables:
     * xdg-screensaver
     * xdotool
@@ -31,6 +35,9 @@ class Module(core.module.Module):
 
         self.__active = False
         self.__xid = None
+        self.caffeinated = self.parameter('caffeinated', 'Consuming caffeine')
+        self.drowsy = self.parameter('drowsy', 'Out of coffee')
+        
 
         core.input.register(self, button=core.input.LEFT_MOUSE, cmd=self.__toggle)
 
@@ -58,9 +65,9 @@ class Module(core.module.Module):
             return
 
         if self.__active:
-            util.cli.execute("notify-send 'Consuming caffeine'")
+            util.cli.execute(f"notify-send '{self.caffeinated}'")
         else:
-            util.cli.execute("notify-send 'Out of coffee'")
+            util.cli.execute(f"notify-send '{self.drowsy}'")
 
     def _suspend_screensaver(self):
         self.__xid = self.__get_i3bar_xid()

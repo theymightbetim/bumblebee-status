@@ -53,7 +53,7 @@ class Module(core.module.Module):
             self.__message = "Ethernet"
         else:
             # We have a wireless connection
-            iw_dat = util.cli.execute("iwgetid")
+            iw_dat = util.cli.execute("nmcli")
             has_ssid = "ESSID" in iw_dat
             signal = self.__compute_signal(self.__interface)
 
