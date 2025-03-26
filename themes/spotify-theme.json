@@ -1,0 +1,29 @@
+{
+    "icons": [ "awesome-fonts" ],
+    "defaults": {
+        "separator-block-width": 0,
+        "separator": "",
+        "warning": {
+          "fg": "#282A36",
+			    "bg": "#E5C07B"
+		    },
+    		"critical": {
+    			"fg": "#282A36",
+    			"bg": "#FF5555"
+    		},
+        "fg": "#048a09",
+        "bg": "#161821"
+    },
+    "spotify": {
+        "fg": "#058a09",
+        "bg": "#161821"
+    },
+    "spacer": {
+	    "fg": "#000000",
+	    "bg": "#000000"
+    },
+    "bluetooth2": {
+        "fg": "#048a09",
+        "bg": "#161821"
+    }
+}
