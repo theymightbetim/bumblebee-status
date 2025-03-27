@@ -1,15 +1,12 @@
 # pylint: disable=C0111,R0903
 
-"""Displays focused i3 window title.
+"""Displays a count of windows on the scratchpad, Left click to launch a rofi window picker for scratchpads
 
 Requirements:
     * i3ipc
+    * python-rofi
 
-Parameters:
-    * 
-
-
-contributed by `UltimatePancake <https://github.com/UltimatePancake>`_ - many thanks!
+contributed by `theymightbetim <https://github.com/theymightbetim>`
 """
 
 import threading
@@ -42,17 +39,15 @@ class Module(core.module.Module):
         # begin listening for events
         threading.Thread(target=self.__i3.main).start()
 
-
     def __getTitle(self, widget):
         return self.__title
 
-
     def __pollScratchpads(self, *args, **kwargs):
-        root  = self.__i3.get_tree()
+        root = self.__i3.get_tree()
         scratchpad = root.scratchpad()
         if not scratchpad:
             self.__scratchpads = 0
-            self.__title = f"no scratchpads found"
+            self.__title = f"No scratchpad found"
             return
 
         leaves = getattr(scratchpad, "floating_nodes", [])
@@ -62,5 +57,6 @@ class Module(core.module.Module):
         if count != self.__scratchpads:
             self.__scratchpads = count
             self.__title = f"{self.__scratchpads}"
+
 
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
